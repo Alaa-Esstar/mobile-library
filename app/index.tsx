@@ -1,20 +1,20 @@
-import { Button, Image, Text, View } from 'react-native'
+import { Button, Pressable, Text, View } from 'react-native'
 import React from 'react'
-import Logo from '../assets/img/logo_light.png';
 import { Link } from 'expo-router';
 import { useTheme } from '../context/ThemeContext';
-
+import Logo from '../components/Logo';
 
 const Home = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { toggleTheme } = useTheme();
     return (
         <View className={`flex-1 items-center justify-center bg-background`}>
-            <Image source={Logo} className='mx-20' />
+            <Logo className='my-5' />
             <Text className='font-bold text-lg text-primary'>Home</Text>
-            <Text className='mt-10 mb-32 text-title'>Reading list app</Text>
-            <Link href="/about" className='mb-5 text-text'>About Page</Link>
-            <Link href="/contact" className='text-text'>Contact Page</Link>
-            <Button onPress={toggleTheme} title="Toggle Theme" />
+            <Link href="/login" className=' text-text'>Login Page</Link>
+            <Link href="/register" className='text-text'>Register Page</Link>
+            <Pressable onPress={toggleTheme} className='mt-5 border border-uiBackground p-1 rounded-md bg-uiBackground'>
+                <Text className='text-text'>Toggle Theme</Text>
+            </Pressable>
         </View>
     )
 }

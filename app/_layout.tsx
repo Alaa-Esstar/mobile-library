@@ -27,7 +27,10 @@ const LayoutContent = () => {
                     },
                     headerTintColor: Colors[theme].title,
                 }}
-            />
+            >
+                <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+                <Stack.Screen name="index" options={{ headerTitle: 'Home' }} />
+            </Stack>
         </SafeAreaView>
     );
 };
