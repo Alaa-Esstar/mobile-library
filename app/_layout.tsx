@@ -4,18 +4,22 @@ import { SafeAreaView } from 'react-native';
 import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { Colors, themes } from '../constants/themes';
 import "./global.css"
+import { UserProvider } from '../context/UserContext';
 
 
 export default function RootLayout() {
     return (
         <ThemeProvider>
-            <LayoutContent />
+            <UserProvider>
+                <LayoutContent />
+            </UserProvider>
         </ThemeProvider>
     );
 }
 
 const LayoutContent = () => {
     const { theme } = useTheme();
+
 
     return (
         <SafeAreaView style={themes[theme]} className='flex-1'>
