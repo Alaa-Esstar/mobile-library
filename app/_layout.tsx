@@ -28,8 +28,9 @@ const LayoutContent = () => {
                     headerTintColor: Colors[theme].title,
                 }}
             >
-                <Stack.Screen name='(auth)' options={{ headerShown: false }} />
                 <Stack.Screen name="index" options={{ headerTitle: 'Home' }} />
+                <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+                <Stack.Screen name='(dashboard)' options={{ headerShown: false }} />
             </Stack>
         </SafeAreaView>
     );

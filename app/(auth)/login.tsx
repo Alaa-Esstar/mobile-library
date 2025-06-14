@@ -21,6 +21,10 @@ const Login = () => {
             <Pressable onPress={() => router.push("/register")} className='mt-5 self-center'>
                 <Text className='text-text'>Register</Text>
             </Pressable>
+
+            <Pressable onPress={() => router.push("/")} className='mt-5 self-center'>
+                <Text className='text-text'>Home</Text>
+            </Pressable>
         </View>
     )
 }
