@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Text } from 'react-native'
+import SafeView from '../../components/SafeView'
 
 const Profile = () => {
   return (
-    <View className='bg-background flex-1 items-center justify-center'>
+    <SafeView className='bg-background flex-1'>
       <Text className='text-title text-lg mb-8 font-bold'>Your Email</Text>
       <Text className='text-text'>Time to start reading some books...</Text>
-    </View>
+    </SafeView>
   )
 }
 

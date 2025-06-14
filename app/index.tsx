@@ -1,4 +1,4 @@
-import { Button, Pressable, Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router';
 import { useTheme } from '../context/ThemeContext';
