@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router"
 import { useTheme } from "../../context/ThemeContext";
 import { Colors } from "../../constants/themes";
+import { Ionicons } from "@expo/vector-icons";
 
 const DashboardLayout = () => {
     const { theme } = useTheme();
@@ -19,9 +20,33 @@ const DashboardLayout = () => {
             }}
 
         >
-            <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
-            <Tabs.Screen name="books" options={{ title: 'Books' }} />
-            <Tabs.Screen name="create" options={{ title: 'Create' }} />
+            <Tabs.Screen name="profile" options={{
+                title: 'Profile', tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                        size={24}
+                        name={focused ? "person" : "person-outline"}
+                        color={focused ? Colors[theme].iconColorFocused : Colors[theme].iconColor}
+                    />
+                )
+            }} />
+            <Tabs.Screen name="books" options={{
+                title: 'Books', tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                        size={24}
+                        name={focused ? "book" : "book-outline"}
+                        color={focused ? Colors[theme].iconColorFocused : Colors[theme].iconColor}
+                    />
+                )
+            }} />
+            <Tabs.Screen name="create" options={{
+                title: 'Create', tabBarIcon: ({ focused }) => (
+                    <Ionicons
+                        size={24}
+                        name={focused ? "create" : "create-outline"}
+                        color={focused ? Colors[theme].iconColorFocused : Colors[theme].iconColor}
+                    />
+                )
+            }} />
         </Tabs>
     )
 }
