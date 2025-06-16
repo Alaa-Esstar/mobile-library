@@ -6,7 +6,7 @@ import { ActivityIndicator } from 'react-native'
 const AuthLayout = () => {
     const { user, isLoading } = useUser()
 
-    if (isLoading) return <ActivityIndicator size="large" color="#0000ff" className="flex-1 bg-background" />
+    if (isLoading) return <ActivityIndicator size="large" className="flex-1 bg-background text-text" />
     if (user) return <Redirect href="/profile" />
 
     return (

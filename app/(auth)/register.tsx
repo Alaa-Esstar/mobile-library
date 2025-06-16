@@ -51,7 +51,7 @@ const Register = () => {
                         name="email"
                         render={({ field: { onChange, onBlur, value } }) => (
                             <ThemedTextInput
-                                className={`w-4/5 ${errors.email ? 'border-wartext-warning' : 'border-bg-300'}`}
+                                className={`w-4/5 ${errors.email && 'border-wartext-warning'}`}
                                 placeholder="Enter your email"
                                 keyboardType="email-address"
                                 autoCapitalize="none"
@@ -69,7 +69,7 @@ const Register = () => {
                         name="password"
                         render={({ field: { onChange, onBlur, value } }) => (
                             <ThemedTextInput
-                                className={`w-4/5 ${errors.password ? 'border-wartext-warning' : 'border-bg-300'}`}
+                                className={`w-4/5 ${errors.password && 'border-wartext-warning'}`}
                                 placeholder="Enter your password"
                                 secureTextEntry
                                 autoCapitalize="none"
