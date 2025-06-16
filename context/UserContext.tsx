@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { account } from "../lib/appwrite";
 import { ID, Models } from "react-native-appwrite"
-import { Alert } from "react-native";
 
 type UserContextType = {
     user: Models.User<Models.Preferences> | null;
@@ -45,8 +44,26 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     async function logout() {
-
+        await account.deleteSession("current");
+        setUser(null);
     }
+
+    async function getInitialUser() {
+        try {
+            setIsLoading(true);
+            const response = await account.get();
+            setUser(response);
+        } catch (error) {
+            setUser(null);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+
+    useEffect(() => {
+        getInitialUser();
+    }, [])
 
     return (
         <UserContext.Provider value={{ user, login, register, logout, isLoading }}>
