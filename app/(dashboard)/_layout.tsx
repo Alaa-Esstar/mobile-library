@@ -25,6 +25,7 @@ const DashboardLayout = () => {
                 <Tabs.Screen name="create" options={{
                     title: 'Create'
                 }} />
+                <Tabs.Screen name="books/[id]" options={{ href: null }} />
             </Tabs>
         </BooksProvider>
     )

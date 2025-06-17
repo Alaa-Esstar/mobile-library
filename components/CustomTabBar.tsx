@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
     const { theme, toggleTheme } = useTheme();
     const insets = useSafeAreaInsets();
+    const visibleTabs = ['profile', 'books', 'create'];
 
     return (
         <View className="flex-row justify-around items-center pt-2"
@@ -16,7 +17,7 @@ const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => 
                 paddingBottom: insets.bottom,
                 height: 100,
             }}>
-            {state.routes.map((route, index) => {
+            {state.routes.filter(route => visibleTabs.includes(route.name)).map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label = options.title || route.name;
 

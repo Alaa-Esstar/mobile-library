@@ -3,11 +3,12 @@ import { ID, Models, Permission, Query, Role } from 'react-native-appwrite';
 import { databaseId, booksCollectionId, databases, client } from '../lib/appwrite';
 import { useUser } from './UserContext';
 
-type Book = Models.Document & {
+export type Book = Models.Document & {
     id: string;
     title: string;
     author: string;
     userid: string;
+    description?: string
 }
 
 type BooksContextType = {
@@ -45,7 +46,8 @@ export const BooksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     async function fetchBook(id: string): Promise<Book | null> {
         try {
-
+            const response = await databases.getDocument(databaseId, booksCollectionId, id);
+            return response as Book
         } catch (error) {
             console.error("Failed to fetch book: ", error);
             throw error;
@@ -76,7 +78,7 @@ export const BooksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     async function deleteBook(id: string): Promise<void> {
         try {
-
+            await databases.deleteDocument(databaseId, booksCollectionId, id)
         } catch (error) {
             console.error("Failed to delete book: ", error);
             throw error;
@@ -93,6 +95,9 @@ export const BooksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 const { payload, events } = response;
                 if (events[0].includes("create")) {
                     setBooks((prev) => [...prev, payload as Book])
+                }
+                if (events[0].includes("delete")) {
+                    setBooks((prev) => prev.filter((book) => book.$id !== (payload as Book).$id))
                 }
             })
 
